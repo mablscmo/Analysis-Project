@@ -29,8 +29,8 @@ class Planet:
 
     def doTimeStep(self,dt):
         # Complete in exercise 2.2
-        self.vx+=-self.k*self.x/(((((self.x)**2)+(self.y)**2))**(3/2))
-        self.vy+=-self.k*self.y/(((((self.x)**2)+(self.y)**2))**(3/2))
+        self.vx+=-self.k*self.x/(((((self.x)**2)+(self.y)**2))**(3/2))*dt
+        self.vy+=-self.k*self.y/(((((self.x)**2)+(self.y)**2))**(3/2))*dt
         self.x+=self.vx*dt
         self.y+=self.vy*dt
         self.t+=dt
@@ -39,7 +39,7 @@ class Planet:
         (x,y,vx,vy)=(self.x,self.y,self.vx,self.vy)
         xvalues=[self.x]
         yvalues=[self.y]
-        for i in linspace(0, maxt, maxt/dt):
+        for i in linspace(dt, maxt, maxt/dt):
             self.doTimeStep(dt)
             xvalues.append(self.x)
             yvalues.append(self.y)
