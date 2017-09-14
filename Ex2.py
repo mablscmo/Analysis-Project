@@ -36,13 +36,15 @@ class Planet:
         self.t+=dt
 #        return(array([self.x,self.y],[self.vx,self.vy]))
     def plot(self, maxt, dt):
+        (x,y,vx,vy)=(self.x,self.y,self.vx,self.vy)
         xvalues=[self.x]
         yvalues=[self.y]
         for i in linspace(0, maxt, maxt/dt):
             self.doTimeStep(dt)
             xvalues.append(self.x)
             yvalues.append(self.y)
-        return(plot(xvalues, yvalues, 'bx'))
+        (self.x,self.y,self.vx,self.vy)=(x,y,vx,vy)
+        return(plot(xvalues, yvalues))
         
 #    def getPeriodAndAxis(self,dt):
         # COmplete in exercise 2.4
