@@ -22,7 +22,6 @@ class Planet:
         self.vx=vx
         self.vy=vy
         self.k=k
-#        self.coord=array([[self.x],[self.y]],[[self.vx],[self.vy]])
 
     def __repr__(self):
         return'x={}, y={}, vx={}, vy={}'.format(self.x,self.y,self.vx,self.vy)
