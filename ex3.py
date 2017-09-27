@@ -63,8 +63,8 @@ for a2 in alpha2:
     T=mercury.t #
     
     # coordinates of the planet in each time step
-    X = [] 
-    Y = []
+    x = [] 
+    y = []
     
     # coordinates of tthe perihelion
     xph = []
@@ -72,6 +72,13 @@ for a2 in alpha2:
     
     # simulate for 2 earth years
     while T<2:
+        mercury.doTimeStep(0.0001)
+        x.append(mercury.x)
+        y.append(mercury.y)
+        if len(y)>2 and sqrt(x[(len(x)-1)-2]**2+y[(len(y)-1)-2]**2)>sqrt(x[(len(x)-1)-1]**2+y[(len(y)-1)-1]**2)<sqrt(mercury.x**2+mercury.y**2):
+            xph.append(x[(len(x)-1)-1])
+            yph.append(y[(len(x)-1)-1])
+            
         # Update planet with doTimeStep, and append the x and y coordinates to X and Y
         # Check if the distance to the Sun in the previus step is smaller than both
         # the current distance and the previous to the previous distance. If so,
